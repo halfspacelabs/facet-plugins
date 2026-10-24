@@ -1,0 +1,43 @@
+# Publishes server.json to the MCP Registry as io.github.halfspacelabs/facet.
+# The registry checks the org through this workflow's OIDC token, so no
+# person's token or secret is involved. Runs when server.json or this file
+# changes on main (bump the version first: the registry keeps each version
+# once), or by hand. mcp-publisher is built from its module at a pinned version, which
+# the Go checksum database verifies.
+name: publish
+
+on:
+  push:
+    branches: [main]
+    paths: [server.json, .github/workflows/publish.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+env:
+  MCP_PUBLISHER: github.com/modelcontextprotocol/registry/cmd/publisher@v1.8.4
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: "1.26"
+          cache: false
+      - name: Validate
+        run: go run "$MCP_PUBLISHER" validate
+      - name: Sign in with OIDC
+        run: go run "$MCP_PUBLISHER" login github-oidc
+      - name: Publish
+        run: go run "$MCP_PUBLISHER" publish
