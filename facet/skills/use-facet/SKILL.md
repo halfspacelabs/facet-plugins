@@ -30,10 +30,10 @@ Version 0 is callable at once. The result's `call` says how.
 
 ## Call a Task
 
-Use the OpenAI SDK the app already has, or add it. Point `base_url` at the serving URL from the result (or from `get_me`), set `model` to the Task name, and read the key from the environment as `FACET_API_KEY`. Never put a key in code. Ask the person to make a key in Facet's Workspace settings, or with `create_key` if they turned on the workspace toolset.
+Use the OpenAI SDK the app already has, or add it. Point `base_url` at the serving URL from the result (or from `get_me`) and set `model` to the Task name. The app's key belongs in the app's own secret config, where the app already keeps its other keys: the person makes it in Facet's Workspace settings and stores it there. You never read, copy or handle the key yourself, and never put one in code.
 
 ```python
-client = OpenAI(base_url=FACET_SERVING_URL, api_key=os.environ["FACET_API_KEY"])
+client = OpenAI(base_url=FACET_SERVING_URL, api_key=FACET_API_KEY)  # both from the app's config
 reply = client.chat.completions.create(model="support-triage", messages=[{"role": "user", "content": text}])
 ```
 
