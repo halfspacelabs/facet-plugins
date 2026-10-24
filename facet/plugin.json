@@ -30,6 +30,7 @@
           "Write"
         ],
         "websiteURL": "https://facet.halfspacelabs.com",
+        "privacyPolicyURL": "https://halfspacelabs.com/privacy",
         "defaultPrompt": "Make a Facet Task for this classification step and show me what it would cost to make it better",
         "brandColor": "#3D51AB",
         "logo": "./assets/logo.svg"
