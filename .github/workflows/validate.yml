@@ -1,0 +1,35 @@
+# Checks every catalog manifest on each push and pull request: valid JSON,
+# one MCP URL and one version everywhere, and the Claude directory profile.
+# Read-only token; actions pinned by commit.
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+      - name: Manifests agree
+        run: |
+          set -euo pipefail
+          files=(.claude-plugin/marketplace.json .agents/plugins/marketplace.json .cursor-plugin/marketplace.json server.json facet/plugin.json facet/mcp.json facet/.claude-plugin/plugin.json facet/.mcp.json)
+          for f in "${files[@]}"; do jq empty "$f"; done
+          urls=$(jq -r '.. | objects | .url? // empty' facet/mcp.json facet/.mcp.json server.json | grep '/mcp$' | sort -u)
+          [ "$urls" = "https://facet.halfspacelabs.com/mcp" ] || { echo "MCP URLs differ: $urls"; exit 1; }
+          versions=$(jq -r '.version // empty' server.json facet/plugin.json facet/.claude-plugin/plugin.json | sort -u)
+          [ "$(wc -l <<<"$versions")" = 1 ] || { echo "versions differ: $versions"; exit 1; }
+      - name: Claude directory profile
+        run: npx --yes @anthropic-ai/claude-code@2.1.310 plugin validate --profile directory facet
