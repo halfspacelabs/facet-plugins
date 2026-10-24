@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "facet": {
+      "type": "http",
+      "url": "https://facet.halfspacelabs.com/mcp"
+    }
+  }
+}

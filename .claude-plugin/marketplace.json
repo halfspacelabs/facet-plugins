@@ -1,0 +1,12 @@
+{
+  "name": "facet",
+  "description": "Facet: a specialized model for one task, from your agent",
+  "owner": { "name": "Halfspace", "url": "https://facet.halfspacelabs.com" },
+  "plugins": [
+    {
+      "name": "facet",
+      "source": "./facet",
+      "description": "The Facet MCP server and the use-facet Skill: make a Task, approve a quote, call the result."
+    }
+  ]
+}

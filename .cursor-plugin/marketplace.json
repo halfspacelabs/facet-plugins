@@ -1,0 +1,8 @@
+{
+  "name": "facet",
+  "owner": { "name": "Halfspace", "url": "https://facet.halfspacelabs.com" },
+  "metadata": { "description": "Facet: a specialized model for one task, from your agent" },
+  "plugins": [
+    { "name": "facet", "source": "facet", "description": "The Facet MCP server and the use-facet Skill." }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "facet",
+  "interface": { "displayName": "Facet" },
+  "plugins": [
+    {
+      "name": "facet",
+      "source": { "source": "local", "path": "./facet" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Developer Tools"
+    }
+  ]
+}

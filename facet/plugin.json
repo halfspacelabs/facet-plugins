@@ -1,0 +1,39 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "facet",
+  "version": "1.0.0",
+  "description": "Build, check and call a specialized model for one narrow task, from your agent.",
+  "author": {
+    "name": "Halfspace",
+    "url": "https://facet.halfspacelabs.com"
+  },
+  "homepage": "https://facet.halfspacelabs.com/docs/agents",
+  "repository": "https://github.com/halfspacelabs/facet-plugins",
+  "license": "MIT",
+  "keywords": [
+    "fine-tuning",
+    "specialized-models",
+    "evals",
+    "mcp",
+    "openai-compatible"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Facet",
+        "shortDescription": "A specialized model for one task, better than a frontier model at it",
+        "longDescription": "Describe a narrow, repeated job and Facet builds a model for it, checks every change against plain-language Expectations, and serves it through an OpenAI-compatible API. You approve each quote before anything runs.",
+        "developerName": "Halfspace",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Interactive",
+          "Write"
+        ],
+        "websiteURL": "https://facet.halfspacelabs.com",
+        "defaultPrompt": "Make a Facet Task for this classification step and show me what it would cost to make it better",
+        "brandColor": "#3D51AB",
+        "logo": "./assets/logo.svg"
+      }
+    }
+  }
+}
