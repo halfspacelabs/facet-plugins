@@ -31,5 +31,7 @@ jobs:
           [ "$urls" = "https://facet.halfspacelabs.com/mcp" ] || { echo "MCP URLs differ: $urls"; exit 1; }
           versions=$(jq -r '.version // empty' server.json facet/plugin.json facet/.claude-plugin/plugin.json | sort -u)
           [ "$(wc -l <<<"$versions")" = 1 ] || { echo "versions differ: $versions"; exit 1; }
+          n=$(jq -r '.description | length' server.json)
+          [ "$n" -ge 1 ] && [ "$n" -le 100 ] || { echo "server.json description is $n characters; the MCP Registry takes 1 to 100"; exit 1; }
       - name: Claude directory profile
         run: npx --yes @anthropic-ai/claude-code@2.1.310 plugin validate --profile directory facet
