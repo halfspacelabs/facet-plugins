@@ -7,6 +7,8 @@
 - **Codex and ChatGPT:** install Facet from the plugin directory
 - **Any MCP client:** add `https://facet.halfspacelabs.com/mcp`; it signs you in with OAuth
 
+Facet is invite-only for now: [join the waitlist](https://halfspacelabs.com/waitlist) first, then sign in with the email we invite.
+
 Docs: [facet.halfspacelabs.com/docs/agents](https://facet.halfspacelabs.com/docs/agents)
 
 This repository is published from `plugin/` in Facet's own repository; change it there.
