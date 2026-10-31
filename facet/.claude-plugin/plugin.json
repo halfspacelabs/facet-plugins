@@ -1,7 +1,7 @@
 {
   "name": "facet",
-  "version": "1.0.0",
-  "description": "Build, check and call a specialized model for one narrow task, from your agent.",
+  "version": "1.0.1",
+  "description": "An autonomous machine learning team for every task: it builds, checks and serves a model.",
   "author": {
     "name": "Halfspace",
     "url": "https://facet.halfspacelabs.com"

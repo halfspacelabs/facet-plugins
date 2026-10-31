@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "facet",
-  "version": "1.0.0",
-  "description": "Build, check and call a specialized model for one narrow task, from your agent.",
+  "version": "1.0.1",
+  "description": "An autonomous machine learning team for every task: it builds, checks and serves a model.",
   "author": {
     "name": "Halfspace",
     "url": "https://facet.halfspacelabs.com"
@@ -21,8 +21,8 @@
     "com.openai": {
       "interface": {
         "displayName": "Facet",
-        "shortDescription": "A specialized model for one task, better than a frontier model at it",
-        "longDescription": "Describe a narrow, repeated job and Facet builds a model for it, checks every change against plain-language Expectations, and serves it through an OpenAI-compatible API. You approve each quote before anything runs.",
+        "shortDescription": "An autonomous ML team that builds a model for one task, better than a frontier model at it",
+        "longDescription": "Describe a narrow, repeated task and Facet's agent builds a model for it on its own, checks every change against plain-language Expectations, and serves it through an OpenAI-compatible API. You approve each quote before anything runs.",
         "developerName": "Halfspace",
         "category": "Developer Tools",
         "capabilities": [
