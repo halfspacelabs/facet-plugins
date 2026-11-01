@@ -5,7 +5,7 @@ description: Use when one narrow, repeated task (classify, extract, route, rewri
 
 # Use Facet
 
-Facet takes one narrow task (a Task) from a plain-language ask to a live model: its agent builds and runs a model for it, keeps it checked against plain-language Expectations, and serves it through an OpenAI-compatible API. Facet's own agent writes the prompts and training data. Your part is to describe the work, show the person the price, and wire the result into their code.
+Facet takes one narrow task (a Task) from a plain-language ask to a live model: its agent builds and runs a model for it, keeps it scored on plain-language evals, and serves it through an OpenAI-compatible API. Facet's own agent writes the prompts and training data. Your part is to describe the work, show the person the price, and wire the result into their code.
 
 ## When Facet fits
 
@@ -26,7 +26,7 @@ Call `create_task` with:
 
 Don't write Instructions, prompts or training data yourself; Facet drafts them. If the result says `drafting`, call `create_task` again with the `draft_id` a minute later.
 
-Version 0 is callable at once. The result's `call` says how.
+The Task answers once v1 merges: start its Planned Change with `start_change` after the person says yes. The result's `call` says how to call it.
 
 ## Call a Task
 
@@ -41,17 +41,17 @@ Send only the input: Facet adds the Task's Instructions. Use `name@vN` to pin a 
 
 ## Make it better
 
-1. When the Task misses, call `file_ask` with the request in the person's words ("keep the time zone in dates") and `evidence`: the inputs it got wrong, with the right outputs if known.
-2. Read the plan: the drafted Expectation, how many examples Latest misses, and each option's quote. `instructions` is cheapest and needs no training; `train` costs more.
-3. Show the person the plan and quotes in one short message and ask which to run. Call `approve_plan` only after their yes, with the approach they chose. The quote is a hard cap.
+1. When the Task misses, call `request_change` with the request in the person's words ("keep the time zone in dates") and `evidence`: the inputs it got wrong, with the right outputs if known.
+2. This makes a Change at once, Planned once Facet has planned it. Read the plan: the drafted eval, how many examples Latest misses, and each option's quote. `instructions` is cheapest and needs no training; `train` costs more.
+3. Show the person the plan and quotes in one short message and ask which to run. Call `start_change` with the Change's id only after their yes, with the approach they chose; it gets its number then. The quote is a hard cap.
 4. Follow it with `get_change`. When it merges, the new Version is Latest for every caller. If something got worse, `rollback` undoes it in one step.
 5. If v1's Change fails, `get_change` lists ways to train it again under `failure.train_again`, each with a base, a typical price and a quote. Show the person and call `train_again` with the base they pick, only after their yes.
 
-If the plan says Latest already passes, tell the person and close the Ask with `close_ask`.
+If the plan says Latest already passes, tell the person and close the Change with `close_change`.
 
 ## Read a scorecard
 
-`get_task` lists each Expectation with its status: green (passes its bar), red (fails), gray (not measured yet), running. Report red ones plainly, with the statement and score. A Change's result shows what got better and what got worse; say both.
+`get_task` lists each eval with its status: green (passes its bar), red (fails), gray (not measured yet), running. Report red ones plainly, with the statement and score. A Change's result shows what got better and what got worse; say both.
 
 ## Rules
 
