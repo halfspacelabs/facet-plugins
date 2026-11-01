@@ -1,7 +1,7 @@
 {
   "name": "facet",
-  "version": "1.0.0",
-  "description": "Build, check and call a specialized model for one narrow task, from your agent.",
+  "version": "1.0.1",
+  "description": "Ask for a model and Facet does the rest: it builds, checks and serves a model for one task.",
   "author": {
     "name": "Halfspace",
     "url": "https://facet.halfspacelabs.com"
