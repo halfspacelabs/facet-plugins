@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "facet",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Ask for a model and Facet does the rest: it builds, checks and serves a model for one task.",
   "author": {
     "name": "Halfspace",
@@ -31,7 +31,7 @@
         ],
         "websiteURL": "https://facet.halfspacelabs.com",
         "privacyPolicyURL": "https://halfspacelabs.com/privacy",
-        "defaultPrompt": "Make a Facet Task for this classification step and show me what it would cost to make it better",
+        "defaultPrompt": "Make a Facet Model for this classification step and show me what it would cost to make it better",
         "brandColor": "#3D51AB",
         "logo": "./assets/logo.svg"
       }
