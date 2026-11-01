@@ -1,6 +1,6 @@
 {
   "name": "facet",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Ask for a model and Facet does the rest: it builds, checks and serves a model for one task.",
   "author": {
     "name": "Halfspace",

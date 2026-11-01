@@ -1,6 +1,6 @@
 # Facet plugins
 
-[Facet](https://facet.halfspacelabs.com) takes a task from one plain-language ask to a live model: its agent builds a model for one narrow task, checks every change against plain-language Expectations, and serves it through an OpenAI-compatible API. This repository is its agent plugin: the remote MCP server and the `use-facet` Skill, for every agent that takes plugins.
+[Facet](https://facet.halfspacelabs.com) takes a task from one plain-language ask to a live model: its agent builds a model for one narrow task, runs plain-language evals on every change, and serves it through an OpenAI-compatible API. This repository is its agent plugin: the remote MCP server and the `use-facet` Skill, for every agent that takes plugins.
 
 - **Claude Code:** `/plugin marketplace add halfspacelabs/facet-plugins`, then `/plugin install facet@facet`
 - **Cursor:** install Facet from the Cursor marketplace

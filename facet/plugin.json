@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "facet",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Ask for a model and Facet does the rest: it builds, checks and serves a model for one task.",
   "author": {
     "name": "Halfspace",
@@ -22,7 +22,7 @@
       "interface": {
         "displayName": "Facet",
         "shortDescription": "Ask for a model for one task; Facet builds it, checks it and keeps it live",
-        "longDescription": "Describe a narrow, repeated task and Facet's agent builds a model for it on its own, checks every change against plain-language Expectations, and serves it through an OpenAI-compatible API. You approve each quote before anything runs.",
+        "longDescription": "Describe a narrow, repeated task and Facet's agent builds a model for it on its own, runs plain-language evals on every change, and serves it through an OpenAI-compatible API. You approve each quote before anything runs.",
         "developerName": "Halfspace",
         "category": "Developer Tools",
         "capabilities": [
