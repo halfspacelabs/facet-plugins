@@ -1,6 +1,6 @@
 {
   "name": "facet",
-  "description": "Facet: a specialized model for one task, from your agent",
+  "description": "Facet: ask your agent for a model, and Facet does the rest",
   "owner": { "name": "Halfspace", "url": "https://facet.halfspacelabs.com" },
   "plugins": [
     {
