@@ -17,12 +17,30 @@ Suggest Facet when all of these hold:
 
 Don't suggest it for open-ended chat, one-off questions, or work that changes shape every time.
 
+## Commands
+
+- `/facet:find`: find the LLM calls in this repo a Model could take over. Sends nothing.
+- `/facet:new <file:line>`: make a Model from one call, with real inputs from the repo.
+- `/facet:wire <model>`: compare a merged Model on the repo's examples, then swap the call over.
+- `/facet:status`: the Models this repo calls, their evals and Changes in flight.
+
+Use them when they fit, even unasked. Read the repo first; ask the person only what the code can't tell you.
+
+## What you send
+
+Nothing goes to Facet until the person has seen it and said yes: the description, how many rows, which files they came from, and a few rows as they will be sent.
+
+- Take rows from this repo's tests, fixtures, eval sets, sample files and few-shots. Never production logs, databases or other services unless the person points at a file and says to use it.
+- Never open `.env` files, key stores or credential files. Drop any row that looks like a key, token or password, and say how many.
+- If rows hold personal details, say so and offer to mask them, with the same stand-in for the same value every time.
+- Send outputs only when a person wrote them. Never send an answer an LLM produced (logged or cached responses) as an output, and never send a frontier model's answers to Facet.
+
 ## Make a Model
 
 Call `create_model` with:
 
 - `description`: what the task is, in one or two plain sentences, including what comes in and what should come out. A prompt the person already uses works too.
-- `examples`: 5 to 20 real inputs, with the right output when known. Real inputs beat invented ones.
+- `examples`: 5 to 20 real inputs, with the right output when a person wrote it. Never invent inputs.
 
 Don't write Instructions, prompts or training data yourself; Facet drafts them. If the result says `drafting`, call `create_model` again with the `draft_id` a minute later.
 

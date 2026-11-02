@@ -6,7 +6,7 @@
     {
       "name": "facet",
       "source": "./facet",
-      "description": "The Facet MCP server and the use-facet Skill: make a Task, approve a quote, call the result."
+      "description": "The Facet MCP server and its Skills: find a call in your repo, make a Model, approve a quote, wire it in."
     }
   ]
 }

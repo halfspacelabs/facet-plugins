@@ -3,6 +3,6 @@
   "owner": { "name": "Halfspace", "url": "https://facet.halfspacelabs.com" },
   "metadata": { "description": "Facet: ask your agent for a model, and Facet does the rest" },
   "plugins": [
-    { "name": "facet", "source": "facet", "description": "The Facet MCP server and the use-facet Skill." }
+    { "name": "facet", "source": "facet", "description": "The Facet MCP server and its Skills." }
   ]
 }
