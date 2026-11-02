@@ -5,7 +5,7 @@
   "description": "Ask for a model and Facet does the rest: it builds, checks and serves a model for one task.",
   "websiteUrl": "https://facet.halfspacelabs.com/docs/agents",
   "repository": { "url": "https://github.com/halfspacelabs/facet-plugins", "source": "github" },
-  "version": "1.0.3",
+  "version": "1.1.0",
   "remotes": [
     { "type": "streamable-http", "url": "https://facet.halfspacelabs.com/mcp" }
   ]
