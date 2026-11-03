@@ -46,7 +46,7 @@ Check it against the call site from step 1 before the person sees it:
 - The data: how many rows are theirs and how many the teacher wrote, and the teacher's sample rows.
 - What was dropped and why: their rows that don't fit the schemas often mean the schema is wrong, not the row.
 
-Show the person, in one short message: the name, what it takes and returns, each eval in one line, the rows by source, what was dropped and why, v1's quote, and what you'd change. Ask: "Create this Model?"
+If you can open pages in a browser beside the person, open the result's `review_url` so they see the draft in Facet. Show the person, in one short message: the name, what it takes and returns, each eval in one line, the rows by source, what was dropped and why, v1's quote, and what you'd change. Ask: "Create this Model?"
 
 - On yes, call `create_model` with the `draft_id` and `confirm: true`, plus `drop_evals` with the ids of evals they reject, or `name` to rename it.
 - If they want changes, or the draft misses the task, call `create_model` with the `draft_id` and the changes in plain words as `description`. Facet's agent redrafts the same draft; review the new one as above. Don't confirm a draft whose output schema doesn't match what the code reads.

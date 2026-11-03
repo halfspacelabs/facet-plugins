@@ -35,6 +35,10 @@ Nothing goes to Facet until the person has seen it and said yes: the description
 - If rows hold personal details, say so and offer to mask them, with the same stand-in for the same value every time.
 - Send outputs only when a person wrote them. Never send an answer an LLM produced (logged or cached responses) as an output, and never send a frontier model's answers to Facet.
 
+## Review steps in the browser
+
+When a result has `review_url`, the person decides something there: a draft, a quote, what a Change did, an approval. If you can open pages in a browser beside them (an integrated or in-app browser), open it so they review it in Facet, and still sum it up in a few lines. Otherwise give them the link.
+
 ## Make a Model
 
 Call `create_model` with:
