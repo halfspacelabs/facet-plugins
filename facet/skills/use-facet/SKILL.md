@@ -44,6 +44,10 @@ Call `create_model` with:
 
 Don't write Instructions, prompts or training data yourself; Facet drafts them. If the result says `drafting`, call `create_model` again with the `draft_id` a minute later.
 
+The result says `review`: nothing is made yet. Review the draft yourself first: do the input and output schemas match what the code sends and reads, does each eval test something the person cares about, and do the training rows and what was dropped make sense? Then show the person, in plain words: the name, what it takes and returns, each eval in one line, the rows by source, what was dropped and why, and v1's quote. Say what you'd change.
+
+On their yes, call `create_model` with the `draft_id` and `confirm: true`, plus `drop_evals` with the ids of any evals they reject. If the draft misses the task, call `create_model` again with a clearer description instead.
+
 The Model answers once v1 merges: start its Planned Change with `start_change` after the person says yes. The result's `call` says how to call it.
 
 ## Call a Model
