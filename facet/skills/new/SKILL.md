@@ -36,5 +36,5 @@ Ask: "Send these to Facet to draft the Model?"
 
 - On yes, call `create_model` with the description and the rows as examples. If the result says drafting, call `create_model` again with only its `draft_id` a minute later.
 - The result has a Planned Change to train v1 and its quote. Show the person the Model's name, its evals in one line each, and the quote. Ask whether to start.
-- Call `start_change` only after their yes in this conversation. Training takes a while; say so, and that Facet emails them when v1 merges. Offer to check with `get_change`.
+- Call `start_change` only after their yes in this conversation. Training takes a while; say so, and that Facet emails them when v1 merges. Offer to watch it in the background with `/loop` and `get_change`, as the use-facet Skill says under Watch a running Change.
 - Once v1 merges, offer /facet:wire.
