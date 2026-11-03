@@ -62,10 +62,19 @@ Send only the input: Facet adds the Model's Instructions. Use `name@vN` to pin a
 1. When the Model misses, call `request_change` with the request in the person's words ("keep the time zone in dates") and `evidence`: the inputs it got wrong, with the right outputs if known.
 2. This makes a Change at once, Planned once Facet has planned it. Read the plan: the drafted eval, how many examples Latest misses, and each option's quote. `instructions` is cheapest and needs no training; `train` costs more.
 3. Show the person the plan and quotes in one short message and ask which to run. Call `start_change` with the Change's id only after their yes, with the approach they chose; it gets its number then. The quote is a hard cap.
-4. Follow it with `get_change`. When it merges, the new Version is Latest for every caller. If something got worse, `rollback` undoes it in one step.
+4. Watch it in the background (below). When it merges, the new Version is Latest for every caller. If something got worse, `rollback` undoes it in one step.
 5. If v1's Change fails, `get_change` lists ways to train it again under `failure.train_again`, each with a base, a typical price and a quote. Show the person and call `train_again` with the base they pick, only after their yes.
 
 If the plan says Latest already passes, tell the person and close the Change with `close_change`.
+
+## Watch a running Change
+
+A Change runs for minutes to hours, and Facet doesn't push updates to you. Don't ask the person to check back: right after `start_change`, offer to watch it, and on yes schedule the checks yourself.
+
+- In Claude Code, use `/loop` (for example `/loop 10m`) with a prompt that calls `get_change` for this Change, stays quiet while it runs, tells the person in one line when it is Ready, merged, failed or stopped at its quote, and then ends the loop.
+- In another client, use its scheduled or background tasks if it has them. Only if it has none, say Facet emails the person when v1 merges and offer to check with `get_change` when they ask.
+- The checks run only while this session stays open; say so in the same line.
+- A check only reads. Merging, training again or raising a quote still waits for the person's yes.
 
 ## Read a scorecard
 
