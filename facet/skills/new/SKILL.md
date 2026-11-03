@@ -32,9 +32,27 @@ Nothing goes to Facet until the person says yes. Show in one short message:
 
 Ask: "Send these to Facet to draft the Model?"
 
-## 4. Make it
+## 4. Draft it
 
 - On yes, call `create_model` with the description and the rows as examples. If the result says drafting, call `create_model` again with only its `draft_id` a minute later.
-- The result has a Planned Change to train v1 and its quote. Show the person the Model's name, its evals in one line each, and the quote. Ask whether to start.
+- The result says `review`: Facet has drafted the Model and nothing is made yet.
+
+## 5. Review the draft
+
+Check it against the call site from step 1 before the person sees it:
+
+- The input and output schemas: every field and allowed value the code reads, with the same names and types. Name any mismatch.
+- Each eval: does it test something the current prompt or the code cares about? Flag ones that test nothing the code reads, and rules the code needs that no eval covers.
+- The data: how many rows are theirs and how many the teacher wrote, and the teacher's sample rows.
+- What was dropped and why: their rows that don't fit the schemas often mean the schema is wrong, not the row.
+
+Show the person, in one short message: the name, what it takes and returns, each eval in one line, the rows by source, what was dropped and why, v1's quote, and what you'd change. Ask: "Create this Model?"
+
+- On yes, call `create_model` with the `draft_id` and `confirm: true`, plus `drop_evals` with the ids of evals they reject, or `name` to rename it.
+- If the draft misses the task, say what's off and draft again from step 4 with a clearer description. Don't confirm a draft whose output schema doesn't match what the code reads.
+
+## 6. Start v1
+
+- The confirm result has a Planned Change to train v1 and its quote. Ask whether to start.
 - Call `start_change` only after their yes in this conversation. Training takes a while; say so, and that Facet emails them when v1 merges. Offer to watch it in the background with `/loop` and `get_change`, as the use-facet Skill says under Watch a running Change.
 - Once v1 merges, offer /facet:wire.
