@@ -34,7 +34,7 @@ Ask: "Send these to Facet to draft the Model?"
 
 ## 4. Draft it
 
-- On yes, call `create_model` with the description and the rows as examples. If the result says drafting, call `create_model` again with only its `draft_id` a minute later.
+- On yes, call `create_model` with the description and the rows as examples. If the result says drafting, call `create_model` again right away with only its `draft_id`; the call waits for the draft itself, so never sleep first.
 - The result says `review`: Facet has drafted the Model and nothing is made yet.
 
 ## 5. Review the draft

@@ -46,7 +46,7 @@ Call `create_model` with:
 - `description`: what the task is, in one or two plain sentences, including what comes in and what should come out. A prompt the person already uses works too.
 - `examples`: 5 to 20 real inputs, with the right output when a person wrote it. Never invent inputs.
 
-Don't write Instructions, prompts or training data yourself; Facet drafts them. If the result says `drafting`, call `create_model` again with the `draft_id` a minute later.
+Don't write Instructions, prompts or training data yourself; Facet drafts them. If the result says `drafting`, call `create_model` again right away with the `draft_id`: the call itself waits up to 40 seconds for the draft and returns as soon as it is ready. Never sleep or wait before calling again.
 
 The result says `review`: nothing is made yet. Review the draft yourself first: do the input and output schemas match what the code sends and reads, does each eval test something the person cares about, and do the training rows and what was dropped make sense? Then show the person, in plain words: the name, what it takes and returns, each eval in one line, the rows by source, what was dropped and why, and v1's quote. Say what you'd change.
 
