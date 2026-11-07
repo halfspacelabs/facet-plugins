@@ -26,6 +26,10 @@ Don't suggest it for open-ended chat, one-off questions, or work that changes sh
 
 Use them when they fit, even unasked. Read the repo first; ask the person only what the code can't tell you.
 
+## Sign in
+
+Facet signs the person in the first time a tool runs. In Claude Code that is `/mcp`, **facet**, **Authenticate**, after a restart once the plugin is installed. Facet is invite-only for now: if the browser shows a waitlist form instead of sign-in, the email isn't invited yet. Tell the person to join at https://halfspacelabs.com/waitlist or sign in with the email their team invited, and don't retry.
+
 ## What you send
 
 Nothing goes to Facet until the person has seen it and said yes: the description, how many rows, which files they came from, and a few rows as they will be sent.
@@ -56,7 +60,7 @@ The Model answers once v1 merges: start its Planned Change with `start_change` a
 
 ## Call a Model
 
-Use the OpenAI SDK the app already has, or add it. Point `base_url` at the serving URL from the result (or from `get_me`) and set `model` to the Model's name. The app's key belongs in the app's own secret config, where the app already keeps its other keys: the person makes it in Facet's Workspace settings and stores it there. You never read, copy or handle the key yourself, and never put one in code.
+Use the OpenAI SDK the app already has, or add it. Point `base_url` at the serving URL from the result's `call` and set `model` to the Model's name. The app's key belongs in the app's own secret config, where the app already keeps its other keys: the person makes it in Facet's Workspace settings and stores it there. You never read, copy or handle the key yourself, and never put one in code.
 
 ```python
 client = OpenAI(base_url=FACET_SERVING_URL, api_key=FACET_API_KEY)  # both from the app's config
@@ -86,7 +90,7 @@ A Change runs for minutes to hours, and Facet doesn't push updates to you. Don't
 
 ## Read a scorecard
 
-`get_model` lists each eval with its status: green (passes its bar), red (fails), gray (not measured yet), running. Report red ones plainly, with the statement and score. A Change's result shows what got better and what got worse; say both.
+`get_model` lists each eval with its status: green (passes its bar), red (fails), gray (fewer than 30 hidden examples, so it doesn't count yet), running. Report red ones plainly, with the statement and score. v1 goes live as the starting point even with red evals, so say which are red when it merges. After v1, a Change merges only when its required evals are green and nothing green on Latest turns red. A Change's result shows what got better and what got worse; say both.
 
 ## Rules
 
