@@ -16,11 +16,14 @@ The person's argument names the call site: $ARGUMENTS. If it is empty, ask which
 
 ## 2. Collect real inputs
 
-- Take 10 to 20 real inputs from this repo only: tests, fixtures, eval sets, sample files and few-shot examples in the prompt. Never invent one; if there are fewer, use what there is and say so.
+- Take 10 to 20 real inputs from this repo only: tests, fixtures, eval sets, sample files and few-shot examples in the prompt. Never invent one.
+- If there are fewer, say so and offer the person a way to bring real ones: "Export a sample of real inputs to a file (masked if you like) and point me at it." Use that file once they point at it.
+- Inputs without outputs are fine: Facet writes the answers. Don't hold back a row because it has no answer.
 - Don't open production logs, databases or other services unless the person points at a file and says to use it. Don't open `.env` files, key stores or credential files.
 - Add an output only when a person wrote it: an expected value in a test, a labeled fixture, a few-shot answer. Never send an answer an LLM produced (logged or cached responses, snapshots of model output) as an output; send that row as an input only.
 - Drop any row that holds something that looks like a key, token or password, and count them.
-- If rows hold personal details (names, emails, phone numbers, addresses, account numbers), say so and offer to mask them before anything is sent, with the same stand-in for the same value every time.
+- If rows hold personal details (names, emails, phone numbers, addresses, account numbers), say so and offer to mask them before anything is sent, with the same stand-in for the same value every time. When the task extracts or labels one of those fields, mask it with a realistic stand-in of the same shape (a made-up email for an email), never a blank or a tag, so the Model still learns the field.
+- For more than 20 rows, or eval rows whose answers a person wrote, use an upload: `create_upload` (kind `training`, or `eval` for rows Facet hides and scores on), `add_upload_rows` up to 1,000 at a time, then pass its id to `create_model` as `training_upload` or `eval_upload`. Show the person the count and three rows first, as below.
 
 ## 3. Show it before it leaves
 
@@ -46,7 +49,7 @@ Check it against the call site from step 1 before the person sees it:
 - The data: how many rows are theirs and how many the teacher wrote, and the teacher's sample rows.
 - What was dropped and why: their rows that don't fit the schemas often mean the schema is wrong, not the row.
 
-If you can open pages in a browser beside the person, open the result's `review_url` so they see the draft in Facet. Show the person, in one short message: the name, what it takes and returns, each eval in one line, the rows by source, what was dropped and why, v1's quote, and what you'd change. Ask: "Create this Model?"
+If you can open pages in a browser beside the person, open the result's `review_url` so they see the draft in Facet. Show the person, in one short message: the workspace it will be made in (the result's `workspace`; if it is Personal, say teammates won't see it), the name, what it takes and returns, each eval in one line, the rows by source, what was dropped and why, v1's quote, and what you'd change. Ask: "Create this Model?"
 
 - On yes, call `create_model` with the `draft_id` and `confirm: true`, plus `drop_evals` with the ids of evals they reject, or `name` to rename it.
 - If they want changes, or the draft misses the task, call `create_model` with the `draft_id` and the changes in plain words as `description`. Facet's agent redrafts the same draft; review the new one as above. Don't confirm a draft whose output schema doesn't match what the code reads.
