@@ -2,10 +2,10 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.halfspacelabs/facet",
   "title": "Facet",
-  "description": "Ask for a model and Facet does the rest: it builds, checks and serves a model for one task.",
+  "description": "Facet's agent builds, evaluates, serves and maintains a small model for one repeated task.",
   "websiteUrl": "https://facet.halfspacelabs.com/docs/agents",
   "repository": { "url": "https://github.com/halfspacelabs/facet-plugins", "source": "github" },
-  "version": "1.5.0",
+  "version": "1.5.2",
   "remotes": [
     { "type": "streamable-http", "url": "https://facet.halfspacelabs.com/mcp" }
   ]

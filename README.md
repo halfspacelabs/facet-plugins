@@ -1,6 +1,6 @@
 # Facet plugins
 
-[Facet](https://facet.halfspacelabs.com) takes a task from one plain-language ask to a live model: its agent builds a model for one narrow task, runs plain-language evals on every change, and serves it through an OpenAI-compatible API. This repository is its agent plugin: the remote MCP server and its Skills, for every agent that takes plugins.
+[Facet](https://facet.halfspacelabs.com) is the autonomous model factory: its agent builds, evaluates, serves and maintains a small model for one narrow, repeated task, runs plain-language evals on every change, and serves it through an OpenAI-compatible API. This repository is its agent plugin: the remote MCP server and its Skills, for every agent that takes plugins.
 
 In Claude Code the Skills are commands:
 
