@@ -1,6 +1,6 @@
 {
   "name": "facet",
-  "description": "Facet: ask your agent for a model, and Facet does the rest",
+  "description": "Facet: the autonomous model factory for one repeated task, from your coding agent",
   "owner": { "name": "Halfspace", "url": "https://facet.halfspacelabs.com" },
   "plugins": [
     {

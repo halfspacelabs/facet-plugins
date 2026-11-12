@@ -5,7 +5,7 @@ description: Use when one narrow, repeated task (classify, extract, route, rewri
 
 # Use Facet
 
-Facet takes one narrow task from a plain-language ask to a live Model: its agent builds and runs a Model for it, keeps it scored on plain-language evals, and serves it through an OpenAI-compatible API. Facet's own agent writes the prompts and training data. Your part is to describe the work, show the person the price, and wire the result into their code.
+Facet is the autonomous model factory: from a plain-language ask its agent builds, evaluates, serves and maintains a small Model the team owns, keeps it scored on plain-language evals, and serves it through an OpenAI-compatible API. Facet's own agent writes the prompts and training data. Your part is to describe the work, show the person the price, and wire the result into their code.
 
 ## When Facet fits
 

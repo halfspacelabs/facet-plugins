@@ -1,7 +1,7 @@
 {
   "name": "facet",
-  "version": "1.5.0",
-  "description": "Ask for a model and Facet does the rest: it builds, checks and serves a model for one task.",
+  "version": "1.5.2",
+  "description": "Facet's agent builds, evaluates, serves and maintains a small model for one repeated task.",
   "author": {
     "name": "Halfspace",
     "url": "https://facet.halfspacelabs.com"
