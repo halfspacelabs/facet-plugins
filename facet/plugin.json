@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "facet",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "Facet's agent builds, evaluates, serves and maintains a small model for one repeated task.",
   "author": {
     "name": "Halfspace",
