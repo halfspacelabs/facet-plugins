@@ -24,6 +24,6 @@ Sign in once in Claude Code:
 2. Run `/mcp`, choose **facet**, then **Authenticate**.
 3. Sign in in the browser tab that opens.
 
-Docs: [facet.halfspacelabs.com/docs/agents](https://facet.halfspacelabs.com/docs/agents)
+Docs: [halfspacelabs.com/docs/agents](https://halfspacelabs.com/docs/agents)
 
 This repository is published from `plugin/` in Facet's own repository; change it there.

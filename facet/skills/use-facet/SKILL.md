@@ -99,4 +99,4 @@ A Change runs for minutes to hours, and Facet doesn't push updates to you. Don't
 - Never approve a plan, train again, raise a quote, merge, or change a spend limit without the person's explicit yes in this conversation.
 - Never write prompts or training data for Facet; describe the task and give real examples.
 - Never paste a key into code or a tool argument you didn't get it from.
-- Docs: https://facet.halfspacelabs.com/docs (Markdown at https://facet.halfspacelabs.com/llms.txt).
+- Docs: https://halfspacelabs.com/docs (Markdown at https://halfspacelabs.com/llms.txt).
