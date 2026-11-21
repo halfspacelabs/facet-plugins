@@ -1,12 +1,12 @@
 {
   "name": "facet",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "Facet's agent builds, evaluates, serves and maintains a small model for one repeated task.",
   "author": {
     "name": "Halfspace",
     "url": "https://facet.halfspacelabs.com"
   },
-  "homepage": "https://facet.halfspacelabs.com/docs/agents",
+  "homepage": "https://halfspacelabs.com/docs/agents",
   "privacyPolicyUrl": "https://halfspacelabs.com/privacy",
   "repository": "https://github.com/halfspacelabs/facet-plugins",
   "license": "MIT",
