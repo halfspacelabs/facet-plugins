@@ -28,7 +28,7 @@ Use them when they fit, even unasked. Read the repo first; ask the person only w
 
 ## Sign in
 
-Facet signs the person in the first time a tool runs. In Claude Code that is `/mcp`, **facet**, **Authenticate**, after a restart once the plugin is installed. Facet is invite-only for now: if the browser shows a waitlist form instead of sign-in, the email isn't invited yet. Tell the person to join at https://halfspacelabs.com/waitlist or sign in with the email their team invited, and don't retry.
+Facet signs the person in the first time a tool runs. In Claude Code that is `/mcp`, **facet**, **Authenticate**, after a restart once the plugin is installed. Someone new signs up on that same page, and every account starts with free credit.
 
 ## What you send
 

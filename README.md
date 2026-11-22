@@ -16,7 +16,7 @@ Nothing leaves your machine until you've seen it and said yes. Rows come only fr
 - **Codex and ChatGPT:** install Facet from the plugin directory
 - **Any MCP client:** add `https://facet.halfspacelabs.com/mcp`; it signs you in with OAuth
 
-Facet is invite-only for now: [join the waitlist](https://halfspacelabs.com/waitlist) first, then sign in with the email we invite. If sign-in shows a waitlist form, that email isn't invited yet.
+New to Facet? Sign up on the same sign-in page; every account starts with free credit.
 
 Sign in once in Claude Code:
 

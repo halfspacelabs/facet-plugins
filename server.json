@@ -5,7 +5,7 @@
   "description": "Facet's agent builds, evaluates, serves and maintains a small model for one repeated task.",
   "websiteUrl": "https://halfspacelabs.com/docs/agents",
   "repository": { "url": "https://github.com/halfspacelabs/facet-plugins", "source": "github" },
-  "version": "1.5.4",
+  "version": "1.5.5",
   "remotes": [
     { "type": "streamable-http", "url": "https://facet.halfspacelabs.com/mcp" }
   ]
