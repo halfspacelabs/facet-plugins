@@ -38,24 +38,23 @@ Ask: "Send these to Facet to draft the Model?"
 ## 4. Draft it
 
 - On yes, call `create_model` with the description and the rows as examples. If the result says drafting, call `create_model` again right away with only its `draft_id`; the call waits for the draft itself, so never sleep first.
-- The result says `review`: Facet has drafted the Model and nothing is made yet.
+- The result says `review`: nothing is made or spent yet. Its `plan` is v1's plan, written by Facet's agent as it plans every Change.
 
-## 5. Review the draft
+## 5. Review v1's plan
 
 Check it against the call site from step 1 before the person sees it:
 
 - The input and output schemas: every field and allowed value the code reads, with the same names and types. Name any mismatch.
 - Each eval: does it test something the current prompt or the code cares about? Flag ones that test nothing the code reads, and rules the code needs that no eval covers.
-- The data: how many rows are theirs and how many the teacher wrote, and the teacher's sample rows.
-- What was dropped and why: their rows that don't fit the schemas often mean the schema is wrong, not the row.
+- v1's quote: the most v1 spends, a hard cap.
 
-If you can open pages in a browser beside the person, open the result's `review_url` so they see the draft in Facet. Show the person, in one short message: the workspace it will be made in (the result's `workspace`; if it is Personal, say teammates won't see it), the name, what it takes and returns, each eval in one line, the rows by source, what was dropped and why, v1's quote, and what you'd change. Ask: "Create this Model?"
+If you can open pages in a browser beside the person, open the result's `review_url` so they see the plan in Facet. Show the person, in one short message: the workspace it will be made in (the result's `workspace`; if it is Personal, say teammates won't see it), the name, what it takes and returns, each eval in one line, v1's quote, and what you'd change. Ask: "Approve v1's plan?"
 
-- On yes, call `create_model` with the `draft_id` and `confirm: true`, plus `drop_evals` with the ids of evals they reject, or `name` to rename it.
-- If they want changes, or the draft misses the task, call `create_model` with the `draft_id` and the changes in plain words as `description`. Facet's agent redrafts the same draft; review the new one as above. Don't confirm a draft whose output schema doesn't match what the code reads.
+- On yes, call `create_model` with the `confirm_id` (or the `draft_id` and `confirm: true`). That one Approve makes the Model and starts v1, up to its quote.
+- If they want changes, they ask on the plan in Facet (`review_url`), or call `create_model` with no `draft_id` and a new description. Don't approve a plan whose output schema doesn't match what the code reads.
+- An imported model's draft is reviewed as a draft: show the rows by source and what was dropped and why too, confirm with `confirm: true` and `drop_evals` for evals they reject, then start its Planned Change with `start_change` after their yes.
 
-## 6. Start v1
+## 6. Follow v1
 
-- The confirm result has a Planned Change to train v1 and its quote. Ask whether to start.
-- Call `start_change` only after their yes in this conversation. Training takes a while; say so, and that Facet emails them when v1 merges. Offer to watch it in the background with `/loop` and `get_change`, as the use-facet Skill says under Watch a running Change.
+- Training takes a while; say so, and that Facet emails them when v1 merges. Offer to watch it in the background with `/loop` and `get_change`, as the use-facet Skill says under Watch a running Change.
 - Once v1 merges, offer /facet:wire.
