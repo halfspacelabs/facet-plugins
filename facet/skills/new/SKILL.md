@@ -52,7 +52,7 @@ If you can open pages in a browser beside the person, open the result's `review_
 
 - On yes, call `create_model` with the `confirm_id` (or the `draft_id` and `confirm: true`). That one Approve makes the Model and starts v1, up to its quote.
 - If they want changes, they ask on the plan in Facet (`review_url`), or call `create_model` with no `draft_id` and a new description. Don't approve a plan whose output schema doesn't match what the code reads.
-- An imported model's draft is reviewed as a draft: show the rows by source and what was dropped and why too, confirm with `confirm: true` and `drop_evals` for evals they reject, then start its Planned Change with `start_change` after their yes.
+- An imported model's plan carries an `attestation`: show it word for word, and confirm with `attest: true` only on their yes to it. v1 is their model as it runs today, and goes live when it merges.
 
 ## 6. Follow v1
 

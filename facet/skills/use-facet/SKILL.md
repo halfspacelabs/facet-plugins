@@ -56,7 +56,7 @@ The result says `review`: nothing is made or spent yet. Its `plan` is v1's plan,
 
 On their yes, call `create_model` with the `confirm_id` (or the `draft_id` and `confirm: true`): that one Approve makes the Model and starts v1, up to its quote. If they want changes, they ask on the plan in Facet (`review_url`), or you call `create_model` with no `draft_id` and a new description.
 
-An imported model's draft is reviewed as a draft, not a plan: show the rows by source and what was dropped and why too. On their yes, call `create_model` with the `draft_id` and `confirm: true`, plus `drop_evals` with the ids of any evals they reject; its v1 then waits as a Planned Change, which you start with `start_change` after their yes.
+An imported model's plan comes once Facet has checked their model, and carries an `attestation`: show it word for word, and add `attest: true` to the confirm only on their yes to those words. v1 is their model as it runs today, and goes live when it merges.
 
 The Model answers once v1 merges. The result's `call` says how to call it.
 
