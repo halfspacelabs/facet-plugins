@@ -52,11 +52,13 @@ Call `create_model` with:
 
 Don't write Instructions, prompts or training data yourself; Facet drafts them. If the result says `drafting`, call `create_model` again right away with the `draft_id`: the call itself waits up to 40 seconds for the draft and returns as soon as it is ready. Never sleep or wait before calling again.
 
-The result says `review`: nothing is made yet. Review the draft yourself first: do the input and output schemas match what the code sends and reads, does each eval test something the person cares about, and do the training rows and what was dropped make sense? Then show the person, in plain words: the name, what it takes and returns, each eval in one line, the rows by source, what was dropped and why, and v1's quote. Say what you'd change.
+The result says `review`: nothing is made or spent yet. Its `plan` is v1's plan, written by Facet's agent as it plans every Change. Review it yourself first: do the input and output schemas match what the code sends and reads, and does each eval test something the person cares about? Then show the person, in plain words: the name, what it takes and returns, each eval in one line, and v1's quote. Say what you'd change.
 
-On their yes, call `create_model` with the `draft_id` and `confirm: true`, plus `drop_evals` with the ids of any evals they reject. If they want changes, or the draft misses the task, call `create_model` with the `draft_id` and the changes in plain words as `description`: Facet's agent redrafts the same draft and you review it again.
+On their yes, call `create_model` with the `confirm_id` (or the `draft_id` and `confirm: true`): that one Approve makes the Model and starts v1, up to its quote. If they want changes, they ask on the plan in Facet (`review_url`), or you call `create_model` with no `draft_id` and a new description.
 
-The Model answers once v1 merges: start its Planned Change with `start_change` after the person says yes. The result's `call` says how to call it.
+An imported model's plan comes once Facet has checked their model, and carries an `attestation`: show it word for word, and add `attest: true` to the confirm only on their yes to those words. v1 is their model as it runs today, and goes live when it merges.
+
+The Model answers once v1 merges. The result's `call` says how to call it.
 
 ## Call a Model
 
